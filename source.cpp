@@ -1,10 +1,9 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <fstream>
-#include <iomanip>
+#include <cstring>
 #include "headerChar.h"
 #include "items.h"
-#include <cstdlib>
 
 using namespace std;
 

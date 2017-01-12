@@ -1,9 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <fstream>
-#include <iomanip>
-#include <cstdio>
 #include <cstring>
+#include <cstdio>
 #include "headerChar.h"
 #include "items.h"
 
@@ -38,7 +37,7 @@ void createChar( Character& pers )
 			ifstream in( nameOfFile );
 			in >> pers.name >> pers.race >> pers.stren >> pers.agil >> pers.intel >> pers.pointsOfSkills;
 		}
-
+		
 }
 
 void selectRace( Character& pers )
@@ -89,19 +88,19 @@ void upgradeCharacteristicsWithPoints( Character& pers )
 					{
 						pers.stren += pers.pointsOfSkills;
 						pers.pointsOfSkills = 0;
-						cout << "done.\n";
+						cout << "done.\n"<<pers.pointsOfSkills<<" points left\n";
 					}
 					else if ( k == 2 )
 					{
 						pers.agil += pers.pointsOfSkills;
 						pers.pointsOfSkills = 0;
-						cout << "done.\n";
+						cout << "done.\n" << pers.pointsOfSkills << " points left\n";
 					}
 					else if ( k == 3 )
 					{
 						pers.intel += pers.pointsOfSkills;
 						pers.pointsOfSkills = 0;
-						cout << "done.\n";
+						cout << "done.\n" << pers.pointsOfSkills << " points left\n";
 					}
 
 				}
@@ -111,19 +110,19 @@ void upgradeCharacteristicsWithPoints( Character& pers )
 					{
 						pers.stren += p;
 						pers.pointsOfSkills -= p;
-						cout << "done.\n";
+						cout << "done.\n" << pers.pointsOfSkills << " points left\n";
 					}
 					else if ( k == 2 )
 					{
 						pers.agil += p;
 						pers.pointsOfSkills -= p;
-						cout << "done.\n";
+						cout << "done.\n" << pers.pointsOfSkills << " points left\n";
 					}
 					else if ( k == 3 )
 					{
 						pers.intel += p;
 						pers.pointsOfSkills -= p;
-						cout << "done.\n";
+						cout << "done.\n" << pers.pointsOfSkills << " points left\n";
 					}
 				}
 
@@ -159,8 +158,32 @@ void saveCharacterInfo( Character& pers )
 
 int HP( Character pers )
 {
-    int HP = pers.stren * 20;
-    if ( pers.Artefact.Buff.HP )
-        HP += pers.Artefact.Buff.HP;
-    return HP;
+	int HP = pers.stren * 20;
+	if ( pers.artefact.Buff.HP )
+		HP += pers.artefact.Buff.HP;
+	return HP;
+}
+
+int HPRegen( Character pers )
+{
+	int reg = pers.stren;
+	if ( pers.artefact.Buff.HPReg )
+		reg += pers.artefact.Buff.HPReg;
+	return reg;
+}
+
+int MP( Character pers )
+{
+	int MP = pers.stren * 10;
+	if ( pers.artefact.Buff.MP )
+		MP += pers.artefact.Buff.MP;
+	return MP;
+}
+
+int MPRegen( Character pers )
+{
+	int reg = pers.intel;
+	if ( pers.artefact.Buff.MPReg )
+		reg += pers.artefact.Buff.MPReg;
+	return reg;
 }

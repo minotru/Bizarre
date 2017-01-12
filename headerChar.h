@@ -8,13 +8,13 @@ struct Character{
 	int agil = 0;
 	int intel = 0;
 	char race[8];
-	weapon Weapon;
-	shield Shield;
-	legs Pants;
-	chest Body;
+	Weapon weapon;
+	Shield shield;
+	Legs pants;
+	Chest Body;
 	int pointsOfSkills;
-	artefact Artefact;
-	bool backpack;
+	Artefact artefact;
+	Backpack backpack;
 
 };
 
