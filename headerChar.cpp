@@ -156,7 +156,7 @@ void saveCharacterInfo( Character& pers )
 
 //_________________________________________________________________________________________________________________________________________________________
 
-int HP( Character pers )
+int HP( const Character& pers )
 {
 	int HP = pers.stren * 20;
 	if ( pers.artefact.Buff.HP )
@@ -164,7 +164,7 @@ int HP( Character pers )
 	return HP;
 }
 
-int HPRegen( Character pers )
+int HPRegen( const Character& pers )
 {
 	int reg = pers.stren;
 	if ( pers.artefact.Buff.HPReg )
@@ -172,7 +172,7 @@ int HPRegen( Character pers )
 	return reg;
 }
 
-int MP( Character pers )
+int MP( const Character& pers )
 {
 	int MP = pers.stren * 10;
 	if ( pers.artefact.Buff.MP )
@@ -180,10 +180,37 @@ int MP( Character pers )
 	return MP;
 }
 
-int MPRegen( Character pers )
+int MPRegen( const Character& pers )
 {
 	int reg = pers.intel;
 	if ( pers.artefact.Buff.MPReg )
 		reg += pers.artefact.Buff.MPReg;
 	return reg;
+}
+
+int Armor( const Character& pers )
+{
+	int armor = 0.4*pers.agil + 0.7*pers.stren;
+	armor /= 5;
+	if ( pers.artefact.Buff.armor )
+		armor += pers.artefact.Buff.armor;
+	return armor;
+}
+
+int MagicArmor( const Character& pers )
+{
+	int armor = pers.intel;
+	armor /= 5;
+	if ( pers.artefact.Buff.magicArmor )
+		armor += pers.artefact.Buff.magicArmor;
+	return armor;
+}
+
+int Evasion( const Character& pers )
+{
+	int evas = 0.8*pers.agil + 0.2*pers.intel;
+	evas /= 5;
+	if ( pers.artefact.Buff.evasion )
+		evas += pers.artefact.Buff.evasion;
+	evas /= 5;
 }
