@@ -1,2 +1,2 @@
-# Bizzare
-Be ready for bizzare!
+# Bizarre
+Be ready for bizarre!
