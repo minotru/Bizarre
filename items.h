@@ -1,18 +1,18 @@
 #ifndef _ITEMS_H
 #define _ITEMS_H
 
-struct buff{
-	int HP = 0;
-	int MP = 0;
-	int HPreg = 0;
-	int MPreg = 0;
-	int armor = 0;		//%
-	int magicArmor = 0;	//%
-	int evasion = 0;	//%
-	int damage = 0;
+struct Buff{
+	int HP;
+	int MP;
+	int HPReg;
+	int MPReg;
+	int armor;
+	int magicArmor;
+	int evasion;
+	int damage;
 };
 
-struct weapon{
+struct Weapon{
 	char name[20];
 	int basicDamage;
 	int durability;
@@ -20,7 +20,7 @@ struct weapon{
 	int space;
 };
 
-struct chest{
+struct Chest{
 	char name[20];
 	int basicArmor;
 	int durability;
@@ -28,7 +28,7 @@ struct chest{
 	int space;
 };
 
-struct legs{
+struct Legs{
 	char name[20];
 	int basicArmor;
 	int durability;
@@ -36,7 +36,7 @@ struct legs{
 	int space;
 };
 
-struct head{
+struct Head{
 	char name[20];
 	int basicArmor;
 	int durability;
@@ -44,7 +44,7 @@ struct head{
 	int space;
 };
 
-struct shield{
+struct Shield{
 	char name[20];
 	int basicArmor;
 	int durability;
@@ -52,20 +52,18 @@ struct shield{
 	int space;
 };
 
-struct artefact{
+struct Artefact{
 	char name[20];
-	buff Buff;
+	Buff buff;
 	int slot = 1;
 	int space;
 };
 
-struct backpack{
+struct Backpack{
 	char name[20];
 	int slot = 1;
 	int capacity;
 	int space;
 };
-
-
 
 #endif
