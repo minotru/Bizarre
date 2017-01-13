@@ -18,9 +18,9 @@ struct Character{
 
     Character()
     {
-        stren = 0;
-        agil = 0;
-        intel = 0;
+        stren = 5;
+        agil = 5;
+        intel = 5;
     }
 };
 
