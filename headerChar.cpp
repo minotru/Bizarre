@@ -1,9 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
-#include <iostream>
-#include <fstream>
-#include <iomanip>
-#include <cstdio>
-#include <cstring>
+#include "stdinclude.h"
 #include "headerChar.h"
 #include "items.h"
 
@@ -12,7 +7,7 @@ using namespace std;
 void createChar( Character& pers )
 {
 		int k;
-		cout << "Hi \nPress 1. to start a new game \nPress 2. to load saved parametres\n";
+		cout << "Hi \nPress 1. to start a new game \nPress 2. to load saved options\n";
 		cin >> k;
 		while ( k<1 || k>2 )
 		{
@@ -23,9 +18,9 @@ void createChar( Character& pers )
 		{
 			cout << "Enter your character's name" << endl;
 			cin.ignore();
-			cin.getline( pers.name , 20 );
+			cin.getline(pers.name , 20);
 			pers.pointsOfSkills = 20;
-			selectRace( pers );
+			selectRace(pers);
 			cout << "Now you need to upgrade characteristics\n";
 			upgradeCharacteristicsWithPoints( pers );
 		}
@@ -76,6 +71,7 @@ void upgradeCharacteristicsWithPoints( Character& pers )
 		if ( pers.pointsOfSkills )
 		{
 			int k;
+			cout << "You have " << pers.pointsOfSkills << " points of skills.\n";
 			cout << "What characteristic do you want to up?\n 1.Strength \n 2.Agility \n 3.Intelligence\n 0.Exit\n";
 			cin >> k;
 			if ( k == 1 || k == 2 || k == 3 )
@@ -84,47 +80,26 @@ void upgradeCharacteristicsWithPoints( Character& pers )
 				cout << "How many points?\n";
 				cin >> p;
 				if ( p >= pers.pointsOfSkills )
-				{
-					if ( k == 1 )
-					{
-						pers.stren += pers.pointsOfSkills;
-						pers.pointsOfSkills = 0;
-						cout << "done.\n";
-					}
-					else if ( k == 2 )
-					{
-						pers.agil += pers.pointsOfSkills;
-						pers.pointsOfSkills = 0;
-						cout << "done.\n";
-					}
-					else if ( k == 3 )
-					{
-						pers.intel += pers.pointsOfSkills;
-						pers.pointsOfSkills = 0;
-						cout << "done.\n";
-					}
-
-				}
+                    cout << "Not enough points!\n";
 				else
 				{
 					if ( k == 1 )
 					{
 						pers.stren += p;
 						pers.pointsOfSkills -= p;
-						cout << "done.\n";
 					}
 					else if ( k == 2 )
 					{
 						pers.agil += p;
 						pers.pointsOfSkills -= p;
-						cout << "done.\n";
 					}
 					else if ( k == 3 )
 					{
 						pers.intel += p;
 						pers.pointsOfSkills -= p;
-						cout << "done.\n";
 					}
+                    cout << "Done.\n";
+                    // << pers.pointsOfSkills << " points left\n";
 				}
 
 			}
@@ -151,7 +126,8 @@ void upgradeCharacteristicsWithPoints( Character& pers )
 void saveCharacterInfo( Character& pers )
 {
 	ofstream out( "Character.txt" );
-	out << pers.name << ' ' << pers.race << ' ' << pers.stren << ' ' << pers.agil << ' ' << pers.intel << ' ' << pers.pointsOfSkills;
+	out << pers.name << ' ' << pers.race << ' ' << pers.stren << ' '
+	<< pers.agil << ' ' << pers.intel << ' ' << pers.pointsOfSkills;
 	out.close();
 }
 
@@ -159,8 +135,32 @@ void saveCharacterInfo( Character& pers )
 
 int HP( Character pers )
 {
-    int HP = pers.stren * 20;
-    if ( pers.Artefact.Buff.HP )
-        HP += pers.Artefact.Buff.HP;
-    return HP;
+	int HP = pers.stren * 20;
+	if ( pers.artefact.buff.HP )
+		HP += pers.artefact.buff.HP;
+	return HP;
+}
+
+int HPRegen(const Character& pers )
+{
+	int reg = pers.stren;
+	if ( pers.artefact.buff.HPReg )
+		reg += pers.artefact.buff.HPReg;
+	return reg;
+}
+
+int MP(const Character& pers )
+{
+	int MP = pers.stren * 10;
+	if ( pers.artefact.buff.MP )
+		MP += pers.artefact.buff.MP;
+	return MP;
+}
+
+int MPRegen(const Character& pers )
+{
+	int reg = pers.intel;
+	if ( pers.artefact.buff.MPReg )
+		reg += pers.artefact.buff.MPReg;
+	return reg;
 }
