@@ -70,82 +70,59 @@ void selectRace( Character& pers )
 
 void upgradeCharacteristicsWithPoints( Character& pers )
 {
-	while ( true )
+	int k=1;
+	while (pers.pointsOfSkills>0 && k!=0)
 	{
-		if ( pers.pointsOfSkills )
-		{
-			int k;
+			cout << "You have " << pers.pointsOfSkills << " points of skills.\n";
 			cout << "What characteristic do you want to up?\n 1.Strength \n 2.Agility \n 3.Intelligence\n 0.Exit\n";
 			cin >> k;
-			if ( k == 1 || k == 2 || k == 3 )
+			if ( k >= 1 && k <= 3 )
 			{
 				int p;
 				cout << "How many points?\n";
 				cin >> p;
-				if ( p >= pers.pointsOfSkills )
-				{
-					if ( k == 1 )
-					{
-						pers.stren += pers.pointsOfSkills;
-						pers.pointsOfSkills = 0;
-						cout << "done.\n"<<pers.pointsOfSkills<<" points left\n";
-					}
-					else if ( k == 2 )
-					{
-						pers.agil += pers.pointsOfSkills;
-						pers.pointsOfSkills = 0;
-						cout << "done.\n" << pers.pointsOfSkills << " points left\n";
-					}
-					else if ( k == 3 )
-					{
-						pers.intel += pers.pointsOfSkills;
-						pers.pointsOfSkills = 0;
-						cout << "done.\n" << pers.pointsOfSkills << " points left\n";
-					}
-
-				}
+				if ( p > pers.pointsOfSkills )
+                    cout << "Not enough points!\n";
 				else
 				{
-					if ( k == 1 )
+					switch (k)
 					{
+					case 1:
 						pers.stren += p;
 						pers.pointsOfSkills -= p;
-						cout << "done.\n" << pers.pointsOfSkills << " points left\n";
-					}
-					else if ( k == 2 )
-					{
+						break;
+					case 2:
 						pers.agil += p;
 						pers.pointsOfSkills -= p;
-						cout << "done.\n" << pers.pointsOfSkills << " points left\n";
-					}
-					else if ( k == 3 )
-					{
+						break;
+					case 3:
 						pers.intel += p;
 						pers.pointsOfSkills -= p;
-						cout << "done.\n" << pers.pointsOfSkills << " points left\n";
+						break;
+					default:
+						break;
 					}
+                    cout << "Done.\n";
+                    // << pers.pointsOfSkills << " points left\n";
 				}
 
 			}
-			else if ( k == 0 )
-			{
-				cout << "Returning back to the menu\n";
-				break;
-			}
-			else
-			{
-				cout << "Wrong, try again\n";
-				continue;
-			}
-		}
-		else
-		{
-			cout << "You have no points, returning back to the menu\n";
-			break;
-		}
+			else 
+				switch (k)
+				{
+				case 0:
+					cout << "Returning back to the menu\n";
+					break;
+				default:
+					cout << "Wrong, try again\n";
+					break;
+				}
+	}
+	if (!pers.pointsOfSkills)
+	{
+		cout << "You have no points, returning back to the menu\n";
 	}
 }
-
 
 void saveCharacterInfo( Character& pers )
 {
