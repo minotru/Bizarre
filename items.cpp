@@ -1,7 +1,5 @@
 #include "stdinclude.h"
-
 #include "items.h"
-#include "headerChar.h"
+#include "character.h"
 
-using namespace std;
 

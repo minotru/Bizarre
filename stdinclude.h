@@ -5,7 +5,8 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
-#include <cstdio>
 #include <cstdlib>
+
+using namespace std;
 
 #endif // _STDINCLUDE_H

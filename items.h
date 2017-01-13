@@ -7,63 +7,57 @@ struct Buff{
 	int HPReg;
 	int MPReg;
 	int armor;
-	int magicArmor;
+    int magicArmor;
 	int evasion;
 	int damage;
+
+    Buff(){
+        HP = MP = HPReg = MPReg = armor = magicArmor = evasion = damage = 0;
+    }
 };
 
-struct Weapon{
-	char name[20];
+struct Item{
+    char name[20];
+    int slot;
+    int space;
+
+    Item(){
+        slot = 1;
+    }
+};
+
+struct Weapon : Item{
 	int basicDamage;
 	int durability;
-	int slot = 1;
-	int space;
 };
 
-struct Chest{
-	char name[20];
+struct Chest : Item{
 	int basicArmor;
 	int durability;
-	int slot = 1;
-	int space;
 };
 
-struct Legs{
-	char name[20];
+
+struct Legs : Item{
 	int basicArmor;
 	int durability;
-	int slot = 1;
-	int space;
 };
 
-struct Head{
-	char name[20];
+struct Head : Item{
 	int basicArmor;
 	int durability;
-	int slot = 1;
-	int space;
 };
 
-struct Shield{
-	char name[20];
+struct Shield : Item{
 	int basicArmor;
 	int durability;
-	int slot = 1;
-	int space;
 };
 
-struct Artefact{
-	char name[20];
+struct Artefact : Item{
 	Buff buff;
-	int slot = 1;
-	int space;
 };
 
 struct Backpack{
-	char name[20];
-	int slot = 1;
 	int capacity;
-	int space;
 };
 
 #endif

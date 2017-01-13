@@ -11,19 +11,25 @@ struct Character{
 	Weapon weapon;
 	Shield shield;
 	Legs pants;
-	Chest body;
+	Chest Body;
 	int pointsOfSkills;
 	Artefact artefact;
 	Backpack backpack;
 
+    Character()
+    {
+        stren = 5;
+        agil = 5;
+        intel = 5;
+    }
 };
 
-void createChar(Character& pers);
+void createChar( Character& pers );
 
-void selectRace(Character& pers);
+void selectRace( Character& pers );
 
-void upgradeCharacteristicsWithPoints(Character& pers);
+void upgradeCharacteristicsWithPoints( Character& pers );
 
-void saveCharacterInfo(Character& pers);
+void saveCharacterInfo( Character& pers );
 
 #endif
