@@ -1,17 +1,16 @@
-#include "headerChar.h"
+#include "character.h"
 #include "items.h"
-
-#include <cstdlib>
+#include "stdinclude.h"
 
 using namespace std;
 
 int main()
 {
-	Character mainOne;
-	createChar(mainOne);
-	saveCharacterInfo(mainOne);
+	Character MainOne;
+	createChar( MainOne );
+	saveCharacterInfo( MainOne );
 
 
-	system("pause");
+	system( "pause" );
 	return 0;
 }
