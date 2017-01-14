@@ -7,9 +7,8 @@ using namespace std;
 int main()
 {
 	Character MainOne;
-	createChar( MainOne );
+	createCharacter( MainOne );
 	saveCharacterInfo( MainOne );
-
 
 	system( "pause" );
 	return 0;

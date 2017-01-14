@@ -8,28 +8,29 @@ struct Character{
 	int agil;
 	int intel;
 	char race[8];
+    int pointsOfSkills;
 	Weapon weapon;
-	Shield shield;
-	Legs pants;
-	Chest Body;
-	int pointsOfSkills;
+    WearableItem shield, pants, body;
 	Artefact artefact;
 	Backpack backpack;
 
-    Character()
-    {
-        stren = 5;
-        agil = 5;
-        intel = 5;
-    }
+    Character(int _stren = 5, int _agil = 5, int _intel = 5);
+
+    int HP();
+    int HPRegen();
+    int MP();
+    int MPRegen();
+    int armor();
+    int magicArmor();
+    int evasion();
 };
 
-void createChar( Character& pers );
+void createCharacter( Character& pers );
 
 void selectRace( Character& pers );
 
 void upgradeCharacteristicsWithPoints( Character& pers );
 
-void saveCharacterInfo( Character& pers );
+void saveCharacterInfo(const Character& pers );
 
 #endif

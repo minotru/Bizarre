@@ -2,9 +2,7 @@
 #include "character.h"
 #include "items.h"
 
-using namespace std;
-
-void createChar( Character& pers )
+void createCharacter( Character& pers )
 {
 	int k;
 	cout << "Hi \nPress 1. to start a new game \nPress 2. to load saved parametres\n";
@@ -26,13 +24,28 @@ void createChar( Character& pers )
 	}
 	else if ( k == 2 )
 	{
-		char nameOfFile[20];
-		cout << "Enter the name of the file\n";
-		cin.ignore();
-		cin.getline( nameOfFile , 20 );
-		ifstream in( nameOfFile );
-		in >> pers.name >> pers.race >> pers.stren >> pers.agil >> pers.intel >> pers.pointsOfSkills;
-	}
+		bool wellRead = false;
+        char nameOfFile[20];
+        int time = 0;
+        do
+        {
+            cout << "Enter your character's name\n";
+		    if (time == 0)
+                cin.ignore();
+		    cin.getline( nameOfFile , 20 );
+            //cout << nameOfFile << '#' << endl;
+            strcat(nameOfFile, ".txt");
+		    ifstream in( nameOfFile );
+		    if (in.is_open()) //file exists
+            {    
+                in >> pers.name >> pers.race >> pers.stren >> pers.agil >> pers.intel >> pers.pointsOfSkills;
+                wellRead = true;
+            }
+            else
+                cout << "Error, no such saved name. Try again.\n";
+            time++;
+        } while (!wellRead);
+    }
 }
 
 void selectRace( Character& pers )
@@ -117,9 +130,12 @@ void upgradeCharacteristicsWithPoints( Character& pers )
 	}
 }
 
-void saveCharacterInfo( Character& pers )
+void saveCharacterInfo(const Character& pers )
 {
-	ofstream out( "Character.txt" );
+	char fileName[80];
+    strcpy(fileName, pers.name);
+    strcat(fileName, ".txt");
+    ofstream out(fileName);
 	out << pers.name << ' ' << pers.race << ' ' << pers.stren << ' ' << pers.agil << ' ' << pers.intel << ' ' << pers.pointsOfSkills;
 	out.close();
 }
