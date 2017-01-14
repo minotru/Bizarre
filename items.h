@@ -26,33 +26,19 @@ struct Item{
     }
 };
 
-struct Weapon : Item{
+struct WearableItem : Item
+{
+    int basicDamage;
+    int durability;
+};
+
+struct Weapon : Item
+{
 	int basicDamage;
-	int durability;
 };
 
-struct Chest : Item{
-	int basicArmor;
-	int durability;
-};
-
-
-struct Legs : Item{
-	int basicArmor;
-	int durability;
-};
-
-struct Head : Item{
-	int basicArmor;
-	int durability;
-};
-
-struct Shield : Item{
-	int basicArmor;
-	int durability;
-};
-
-struct Artefact : Item{
+struct Artefact : Item
+{
 	Buff buff;
 };
 
@@ -61,3 +47,24 @@ struct Backpack{
 };
 
 #endif
+//
+//struct Chest : Item{
+//	int basicArmor;
+//	int durability;
+//};
+//
+//
+//struct Legs : Item{
+//	int basicArmor;
+//	int durability;
+//};
+//
+//struct Head : Item{
+//	int basicArmor;
+//	int durability;
+//};
+//
+//struct Shield : Item{
+//	int basicArmor;
+//	int durability;
+//};
