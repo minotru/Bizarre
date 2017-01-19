@@ -2,14 +2,14 @@
 #define _ITEMS_H
 
 struct Buff{
-	int HP;
-	int MP;
-	int HPReg;
-	int MPReg;
-	int armor;
+    int HP;
+    int MP;
+    int HPReg;
+    int MPReg;
+    int armor;
     int magicArmor;
-	int evasion;
-	int damage;
+    int evasion;
+    int damage;
 
     Buff(){
         HP = MP = HPReg = MPReg = armor = magicArmor = evasion = damage = 0;
@@ -34,37 +34,37 @@ struct WearableItem : Item
 
 struct Weapon : Item
 {
-	int basicDamage;
+    int basicDamage;
 };
 
 struct Artefact : Item
 {
-	Buff buff;
+    Buff buff;
 };
 
 struct Backpack{
-	int capacity;
+    int capacity;
 };
 
 #endif
 //
 //struct Chest : Item{
-//	int basicArmor;
-//	int durability;
+//    int basicArmor;
+//    int durability;
 //};
 //
 //
 //struct Legs : Item{
-//	int basicArmor;
-//	int durability;
+//    int basicArmor;
+//    int durability;
 //};
 //
 //struct Head : Item{
-//	int basicArmor;
-//	int durability;
+//    int basicArmor;
+//    int durability;
 //};
 //
 //struct Shield : Item{
-//	int basicArmor;
-//	int durability;
+//    int basicArmor;
+//    int durability;
 //};

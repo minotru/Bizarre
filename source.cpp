@@ -6,10 +6,10 @@ using namespace std;
 
 int main()
 {
-	Character MainOne;
-	createCharacter( MainOne );
-	saveCharacterInfo( MainOne );
+    Character MainOne;
+    createCharacter( MainOne );
+    saveCharacterInfo( MainOne );
 
-	system( "pause" );
-	return 0;
+    system( "pause" );
+    return 0;
 }
