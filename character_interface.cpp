@@ -52,8 +52,8 @@ void createCharacter( Character& pers )
 
 void selectRace( Character& pers )
 {
-    cout << "Select your race \n\
-             1.Human (+Intelligence) \n2.Orc (+Strength) \n 3.Elf (+Agility)\n";
+    cout << "Select your race\n"
+        "1.Human (+Intelligence)\n2.Orc (+Strength)\n3.Elf (+Agility)\n";
     int l;
     cin >> l;
     while ( l<1 || l>3 )
@@ -85,8 +85,8 @@ void upgradeCharacteristicsWithPoints( Character& pers )
     while (pers.pointsOfSkills>0 && k!=0)
     {
         cout << "You have " << pers.pointsOfSkills << " points of skills.\n";
-        cout << "What characteristic do you want to up?\n\
-                 1.Strength \n 2.Agility \n 3.Intelligence\n 0.Exit\n";
+        cout << "What characteristic do you want to up?\n"
+                "1.Strength \n2.Agility \n3.Intelligence\n0.Exit\n";
         cin >> k;
         if ( k >= 1 && k <= 3 )
         {

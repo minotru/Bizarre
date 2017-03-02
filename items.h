@@ -47,24 +47,3 @@ struct Backpack{
 };
 
 #endif
-//
-//struct Chest : Item{
-//    int basicArmor;
-//    int durability;
-//};
-//
-//
-//struct Legs : Item{
-//    int basicArmor;
-//    int durability;
-//};
-//
-//struct Head : Item{
-//    int basicArmor;
-//    int durability;
-//};
-//
-//struct Shield : Item{
-//    int basicArmor;
-//    int durability;
-//};
