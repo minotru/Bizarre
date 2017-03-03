@@ -15,7 +15,7 @@ class ILocation : public ISerializable
 {
 public:
     virtual ActionResult action(Character& character) = 0;
-    virtual ~ILocation() {};
+    virtual ~ILocation() {}
 };
 
 class LocationEmpty : public ILocation
