@@ -1,5 +1,4 @@
-#include "stdinclude.h"
-#include "items.h"
+#include "common.h"
 #include "character.h"
-
+#include "items.h"
 

@@ -1,10 +1,8 @@
-#include "stdinclude.h"
+#include "common.h"
 #include "character.h"
 #include "items.h"
 
-using namespace std;
-
-void createChar( Character& pers )
+void createCharacter( Hero& pers )
 {
 	int k;
 	cout << "Hi \nPress 1. to start a new game \nPress 2. to load saved parametres\n";
@@ -18,7 +16,7 @@ void createChar( Character& pers )
 	{
 	    cout << "Enter your character's name" << endl;
 		cin.ignore();
-		cin.getline( pers.name , 20 );
+        getline ( cin , pers.name );
 		pers.pointsOfSkills = 20;
 		selectRace( pers );
 		cout << "Now you need to upgrade characteristics\n";
@@ -26,16 +24,32 @@ void createChar( Character& pers )
 	}
 	else if ( k == 2 )
 	{
-		char nameOfFile[20];
-		cout << "Enter the name of the file\n";
-		cin.ignore();
-		cin.getline( nameOfFile , 20 );
-		ifstream in( nameOfFile );
-		in >> pers.name >> pers.race >> pers.stren >> pers.agil >> pers.intel >> pers.pointsOfSkills;
-	}
+		bool wellRead = false;
+        string nameOfFile;
+        int time = 0;
+        do
+        {
+            cout << "Enter your character's name\n";
+		    if (time == 0)
+                cin.ignore();
+            getline ( cin , nameOfFile );
+            //cout << nameOfFile << '#' << endl;
+            nameOfFile += ".txt";
+		    ifstream in( nameOfFile );
+		    if (in.is_open()) //file exists
+            {    
+                in >> pers.name >> pers.race >> pers.stren >> pers.agil >> pers.intel >> pers.pointsOfSkills;
+                wellRead = true;
+            }
+            else
+                cout << "Error, no such saved name. Try again.\n";
+            time++;
+        } while (!wellRead);
+    }
 }
 
-void selectRace( Character& pers )
+
+void selectRace( Hero& pers )
 {
 	cout << "Select your race \n 1.Human (+Intelligence) \n 2.Orc (+Strength) \n 3.Elf (+Agility)\n";
 	int l;
@@ -47,23 +61,23 @@ void selectRace( Character& pers )
 	}
 	if ( l == 1 )
 	{
-		strcpy( pers.race , "Human" );
+        pers.race.assign ( "Human" );
 		pers.intel += 10;
 	}
 	if ( l == 2 )
 	{
-		strcpy( pers.race , "Orc" );
+        pers.race.assign ( "Orc" );
 		pers.stren += 10;
 	}
 	if ( l == 3 )
 	{
-		strcpy( pers.race , "Elf" );
+        pers.race.assign ( "Elf" );
 		pers.agil += 10;
 	}
 }
 
 
-void upgradeCharacteristicsWithPoints( Character& pers )
+void upgradeCharacteristicsWithPoints( Hero& pers )
 {
 	int k=1;
 	while (pers.pointsOfSkills>0 && k!=0)
@@ -117,9 +131,14 @@ void upgradeCharacteristicsWithPoints( Character& pers )
 	}
 }
 
-void saveCharacterInfo( Character& pers )
+
+void saveCharacterInfo(const Hero& pers )
 {
-	ofstream out( "Character.txt" );
-	out << pers.name << ' ' << pers.race << ' ' << pers.stren << ' ' << pers.agil << ' ' << pers.intel << ' ' << pers.pointsOfSkills;
+    string nameOfFile;
+    nameOfFile.assign ( pers.name );
+    nameOfFile += ".txt";
+    ofstream out ( nameOfFile );
+    out << pers.name << ' ' << pers.race << ' ' << pers.stren << ' ' << pers.agil << ' ' << pers.intel << ' ' << pers.pointsOfSkills;
 	out.close();
 }
+

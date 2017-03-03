@@ -1,0 +1,4 @@
+Sword 15 20 20
+Axe 18 25 15
+Spear 20 30 10
+Knife 10 10 20
