@@ -2,9 +2,26 @@
 #include "character.h"
 #include "items.h"
 
+void deffinetelyTheBestPartOfThisGame ()
+{
+    Beep ( 659.26 , 200 );
+    Beep ( 659.26 , 200 );
+    Sleep ( 200 );
+    Beep ( 659.26 , 200 );
+    Sleep ( 100 );
+    Beep ( 523.26 , 200 );
+    Beep ( 659.26 , 200 );
+    Sleep ( 200 );
+    Beep ( 783.98 , 200 );
+    Sleep ( 400 );
+    Beep ( 391.99 , 200 );
+
+}
+
 void createCharacter( Hero& pers )
 {
 	int k;
+	deffinetelyTheBestPartOfThisGame();
 	cout << "Hi \nPress 1. to start a new game \nPress 2. to load saved parametres\n";
 	cin >> k;
 	while ( k<1 || k>2 )

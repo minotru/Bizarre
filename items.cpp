@@ -2,3 +2,7 @@
 #include "character.h"
 #include "items.h"
 
+Item::~Item ()
+{
+
+}

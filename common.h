@@ -2,6 +2,7 @@
 #define _COMMON_H
 
 #define _CRT_SECURE_NO_WARNINGS
+#include <Windows.h>
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -13,6 +14,7 @@
 #include <cstring>
 #include <algorithm>
 #include <stdexcept>
+
 
 using namespace std;
 
